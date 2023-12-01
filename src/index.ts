@@ -11,7 +11,6 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Top Level Middleware Declaration
-app.use(cors);
 config();
 
 async function startServer() {
@@ -26,7 +25,7 @@ async function startServer() {
 	await server.start();
 
 	// Apply the Apollo middleware to the Express app
-	app.use("/graphql", cors, express.json(), expressMiddleware(server));
+	app.use("/graphql", cors(), express.json(), expressMiddleware(server));
 
 	// Start the Express server
 	app.listen({ port: port }, () => {
