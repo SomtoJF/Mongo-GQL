@@ -9,7 +9,6 @@ import { expressMiddleware } from "@apollo/server/express4";
 const app = express();
 const port = process.env.PORT || 4000;
 // Top Level Middleware Declaration
-app.use(cors);
 config();
 async function startServer() {
     //  // Connect to the database
@@ -21,10 +20,10 @@ async function startServer() {
     });
     await server.start();
     // Apply the Apollo middleware to the Express app
-    app.use("/graphql", cors, express.json(), expressMiddleware(server));
+    app.use("/graphql", cors(), express.json(), expressMiddleware(server));
     // Start the Express server
     app.listen({ port: port }, () => {
-        console.log(`Server ready at port ${port}`);
+        console.log(`🚀 Server ready at port ${port}`);
     });
 }
 startServer();

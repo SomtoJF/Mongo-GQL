@@ -19,6 +19,7 @@ type Customer{
 type Query{
     accounts: [Account]
     customers: [Customer]
+    account(id: String!): Account
 }`;
 
 export default typeDefs;
