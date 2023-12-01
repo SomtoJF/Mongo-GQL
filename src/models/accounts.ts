@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { AccountInterface } from "../types/accounts";
 
-const accountSchema = new mongoose.Schema({
+const accountSchema = new mongoose.Schema<AccountInterface>({
 	account_id: {
 		type: Number,
 		required: true,
