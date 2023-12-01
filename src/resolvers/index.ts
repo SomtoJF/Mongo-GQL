@@ -6,10 +6,20 @@ type GetByIdArgType = {
 	id: string;
 };
 
+type GetByPageNumberArgType = {
+	page: number;
+};
+
 const resolvers = {
 	Query: {
-		accounts: async () => await Account.find(),
-		customers: async () => await Customer.find(),
+		accounts: async (_: any, args: GetByPageNumberArgType) =>
+			await Account.find()
+				.skip(15 * (args.page - 1))
+				.limit(15),
+		customers: async (_: any, args: GetByPageNumberArgType) =>
+			await Customer.find()
+				.skip(15 * (args.page - 1))
+				.limit(15),
 		account: async (_: any, args: GetByIdArgType) =>
 			await Account.findById(args.id),
 		customer: async (_: any, args: GetByIdArgType) =>

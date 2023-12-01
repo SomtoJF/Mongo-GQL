@@ -17,8 +17,8 @@ type Customer{
 }
 
 type Query{
-    accounts: [Account]
-    customers: [Customer]
+    accounts(page: Int!): [Account]
+    customers(page: Int!): [Customer]
     account(id: String!): Account
     customer(id: String!): Customer
 }`;
