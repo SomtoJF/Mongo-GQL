@@ -20,6 +20,7 @@ type Query{
     accounts: [Account]
     customers: [Customer]
     account(id: String!): Account
+    customer(id: String!): Customer
 }`;
 
 export default typeDefs;
